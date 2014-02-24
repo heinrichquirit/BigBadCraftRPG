@@ -1,0 +1,6 @@
+# The main colour scheme.
+colour-scheme: GOLD
+# The max mob-spawn limit to spawn.
+max-spawn-mob-limit: 10
+# The max limit for the random number to be generated and the amount to drop on monster death
+ingot-max-limit: 5

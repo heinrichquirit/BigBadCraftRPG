@@ -1,0 +1,24 @@
+name: BigBadCraftRPG
+main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
+version: 1.0.0
+author: [BigBadHenz]
+commands:
+  spawnmob:
+    description: To spawn specified mobs.
+  killall:
+    description: The main command to kill all mobs or animals.
+  give:
+    description: Spawn the items you wish for.
+    aliases: [i]
+  god:
+    description: Toggle god mode on or off.
+  day:
+    description: Set the time to day.
+  night:
+    description: Set the time to night.
+  fly:
+    description: Toggle fly mode on or off.
+  list:
+    description: Display current online players.
+  viewgold:
+    description: View your current gold balance.
