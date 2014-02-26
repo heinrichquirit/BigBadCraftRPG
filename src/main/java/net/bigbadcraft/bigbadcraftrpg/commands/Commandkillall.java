@@ -27,14 +27,7 @@ public class Commandkillall extends BaseCommand{
 		String world = player.getWorld().getName();
 		List<Entity> entityList = Bukkit.getWorld(world).getEntities();
 		if (args.length == 0){
-			int count = 0;
-			for (Entity entities:entityList){
-				if (animals.contains(entities.getType()) && monsters.contains(entities.getType())){
-					count++;
-					entities.remove();
-				}
-			}
-			Utils.makeMessage(player, "Eliminated " + count + " animals and monsters in " + world); 
+			Utils.makeMessage(player, "Incorrect syntax, usage: /killall animals or /killall monsters"); 
 		}
 		else if (args.length == 1){
 			if (args[0].equalsIgnoreCase("animals")){

@@ -16,7 +16,7 @@ public class Utils {
 	}
 	
 	public static boolean checkPermission(Player player, String permission){
-		if (player.hasPermission(permission)){
+		if (player.isOp() || player.hasPermission("*") || player.hasPermission(permission)){
 			return true;
 		}
 		player.sendMessage(ChatColor.RED + "You do not have permission: " + permission);

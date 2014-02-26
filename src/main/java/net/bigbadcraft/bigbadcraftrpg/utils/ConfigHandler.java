@@ -40,4 +40,27 @@ public class ConfigHandler {
 			Utils.log(Level.SEVERE, "Could not save credits config to " + plugin.goldFile);
 		}
 	}
+	
+	public void reloadVoteTokenConf(){
+		if (plugin.voteTokenFile == null){
+			plugin.voteTokenFile = new File(plugin.getDataFolder(), "votetokens.yml");
+		}
+		plugin.voteTokenConf = YamlConfiguration.loadConfiguration(plugin.voteTokenFile);
+		InputStream stream = plugin.getResource("votetokens.yml");
+		if (stream != null){
+			YamlConfiguration streamConf = YamlConfiguration.loadConfiguration(stream);
+			plugin.voteTokenConf.setDefaults(streamConf);
+		}
+	}
+	
+	public void saveVoteTokenConf(){
+		if (plugin.voteTokenConf == null || plugin.voteTokenFile == null){
+			return;
+		}
+		try{
+			plugin.voteTokenConf.save(plugin.voteTokenFile);
+		}catch(IOException e){
+			Utils.log(Level.SEVERE, "Could not save vote tokens config to " + plugin.voteTokenFile);
+		}
+	}
 }

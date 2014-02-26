@@ -9,7 +9,9 @@ public class Commandbounty extends BaseCommand {
 	@Override
 	public void execute(Player player, Command cmd, String[] args) {
 		// TODO Auto-generated method stub
-		
+		if (args.length == 0){
+			
+		}
 	}
 
 }

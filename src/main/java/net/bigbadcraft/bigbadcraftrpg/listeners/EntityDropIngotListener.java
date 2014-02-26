@@ -34,11 +34,8 @@ public class EntityDropIngotListener implements Listener {
 	public void onDeath(EntityDeathEvent event) {
 		if (event.getEntity() instanceof Monster) {
 			if (event.getEntity().getKiller() instanceof Player) {
-				
 				Entity entity = event.getEntity();
-				
 				Random random = new Random();
-				
 				entity.getWorld().dropItem(entity.getLocation(), ingot(random.nextInt(plugin.ingotMaxLimit)));
 			}
 		}

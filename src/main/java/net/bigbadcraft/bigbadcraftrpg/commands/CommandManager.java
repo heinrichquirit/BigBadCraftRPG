@@ -22,48 +22,63 @@ public class CommandManager implements CommandExecutor{
 			return true;
 		}
 		Player player = (Player)sender;
-		if (cmd.getName().equalsIgnoreCase("viewgold")){
-			new Commandviewgold().execute(player, cmd, args);
+		String cmdName = cmd.getName();
+		if (cmdName.equalsIgnoreCase("viewgold")){
+			if (Utils.checkPermission(player, Permission.VIEW_GOLD)){
+				new Commandviewgold().execute(player, cmd, args);
+			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("bounty")){
-			new Commandbounty().execute(player, cmd, args);
+		else if (cmdName.equalsIgnoreCase("bounty")){
+			if (Utils.checkPermission(player, Permission.BOUNTY)){
+				new Commandbounty().execute(player, cmd, args);
+			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("day")){
+		else if (cmdName.equalsIgnoreCase("votetoken")){
+			if (Utils.checkPermission(player, Permission.VOTE_TOKEN)){
+				new Commandvotetoken(plugin).execute(player, cmd, args);
+			}
+		}
+		else if (cmdName.equalsIgnoreCase("gamemode")){
+			if (Utils.checkPermission(player, Permission.GAMEMODE)){
+				new Commandgamemode().execute(player, cmd, args);
+			}
+		}
+		else if (cmdName.equalsIgnoreCase("day")){
 			if (Utils.checkPermission(player, Permission.DAY)){
 				new Commandday().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("fly")){
+		else if (cmdName.equalsIgnoreCase("fly")){
 			if (Utils.checkPermission(player, Permission.FLY)){
 				new Commandfly().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("give")){
+		else if (cmdName.equalsIgnoreCase("give")){
 			if (Utils.checkPermission(player, Permission.GIVE)){
 				new Commandgive().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("god")){
+		else if (cmdName.equalsIgnoreCase("god")){
 			if (Utils.checkPermission(player, Permission.GOD)){
 				new Commandgod(plugin).execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("killall")){
+		else if (cmdName.equalsIgnoreCase("killall")){
 			if (Utils.checkPermission(player, Permission.KILL_ALL)){
 				new Commandkillall().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("list")){
+		else if (cmdName.equalsIgnoreCase("list")){
 			if (Utils.checkPermission(player, Permission.LIST)){
 				new Commandlist().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("night")){
+		else if (cmdName.equalsIgnoreCase("night")){
 			if (Utils.checkPermission(player, Permission.NIGHT)){
 				new Commandnight().execute(player, cmd, args);
 			}
 		}
-		else if (cmd.getName().equalsIgnoreCase("spawnmob")){
+		else if (cmdName.equalsIgnoreCase("spawnmob")){
 			if (Utils.checkPermission(player, Permission.SPAWN_MOB)){
 				new Commandspawnmob(plugin).execute(player, cmd, args);
 			}

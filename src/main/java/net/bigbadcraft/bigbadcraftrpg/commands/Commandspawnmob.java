@@ -34,8 +34,9 @@ public class Commandspawnmob extends BaseCommand{
 			} else {
 				location = player.getLocation();
 			}
-			Bukkit.getWorld(player.getWorld().getName()).spawnEntity(location.add(0.0D, 1.0D, 0.0D), EntityType.valueOf(mob));
-			Utils.makeMessage(player, "Spawned a " + mob.toLowerCase() + ".");
+			
+				Bukkit.getWorld(player.getWorld().getName()).spawnEntity(location.add(0.0D, 1.0D, 0.0D), EntityType.valueOf(mob));
+				Utils.makeMessage(player, "Spawned a " + mob.toLowerCase() + ".");
 		}
 		else if (args.length == 2){
 			String mob = args[0].toUpperCase();

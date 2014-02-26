@@ -4,3 +4,13 @@ colour-scheme: GOLD
 max-spawn-mob-limit: 10
 # The max limit for the random number to be generated and the amount to drop on monster death
 ingot-max-limit: 5
+# The information set-up for vote tokens.
+# Format: <token>:<goldreward>:<xpreward>
+vote-token:
+- 20:75:1000
+- 40:150:1500
+- 60:225:2000
+- 80:300:2500
+- 100:375:3000
+- 120:450:4000
+- 150:600:5000

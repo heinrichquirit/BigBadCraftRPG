@@ -3,6 +3,13 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  gamemode:
+    description: Switch your gamemodes.
+    aliases: [gm]
+  votetoken:
+    description: View your vote tokens and other information.
+  bounty:
+    description: Display information about bounty loots etc.
   spawnmob:
     description: To spawn specified mobs.
   killall:
