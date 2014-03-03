@@ -30,6 +30,9 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public int ingotMaxLimit;
 	public List<String> voteTokens;
 	
+	/* Spawn configuration settings */
+	public List<String> spawnPoints;
+	
 	public ConfigHandler confHandler;
 	
 	/* Custom configuration files */
@@ -37,6 +40,8 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public FileConfiguration goldConf;
 	public File voteTokenFile;
 	public FileConfiguration voteTokenConf;
+	public File spawnsFile;
+	public FileConfiguration spawnsConf;
 	
 	/* Managers */
 	private CommandManager commandManager;
@@ -57,6 +62,8 @@ public class BigBadCraftRPG extends JavaPlugin {
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
 		
+		spawnPoints = getConfig().getStringList(ConfigPath.SPAWN);
+		
 		confHandler = new ConfigHandler(this);
 		
 		/* Initialize and load the gold ingots balances file */
@@ -69,6 +76,11 @@ public class BigBadCraftRPG extends JavaPlugin {
 		Utils.loadFile(voteTokenFile);
 		voteTokenConf = YamlConfiguration.loadConfiguration(voteTokenFile);
 		confHandler.reloadVoteTokenConf();
+		
+		spawnsFile = new File(getDataFolder(), "spawns.yml");
+		Utils.loadFile(spawnsFile);
+		spawnsConf = YamlConfiguration.loadConfiguration(spawnsFile);
+		confHandler.reloadSpawnsConf();
 		
 		
 		registerListener(new EntityDropIngotListener(this));
@@ -92,6 +104,9 @@ public class BigBadCraftRPG extends JavaPlugin {
 		commands.add("spawnmob");
 		commands.add("votetoken");
 		commands.add("gamemode");
+		commands.add("paygold");
+		commands.add("clearinventory");
+		commands.add("spawn");
 	}
 	
 	private void registerListener(Listener listener){

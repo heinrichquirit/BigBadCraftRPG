@@ -63,4 +63,27 @@ public class ConfigHandler {
 			Utils.log(Level.SEVERE, "Could not save vote tokens config to " + plugin.voteTokenFile);
 		}
 	}
+	
+	public void reloadSpawnsConf(){
+		if (plugin.spawnsFile == null){
+			plugin.spawnsFile = new File(plugin.getDataFolder(), "spawns.yml");
+		}
+		plugin.spawnsConf = YamlConfiguration.loadConfiguration(plugin.spawnsFile);
+		InputStream stream = plugin.getResource("spawns.yml");
+		if (stream != null){
+			YamlConfiguration streamConf = YamlConfiguration.loadConfiguration(stream);
+			plugin.spawnsConf.setDefaults(streamConf);
+		}
+	}
+	
+	public void saveSpawnsConf(){
+		if (plugin.spawnsConf == null || plugin.spawnsFile == null){
+			return;
+		}
+		try{
+			plugin.spawnsConf.save(plugin.spawnsFile);
+		}catch(IOException e){
+			Utils.log(Level.SEVERE, "Could not save vote tokens config to " + plugin.spawnsFile);
+		}
+	}
 }

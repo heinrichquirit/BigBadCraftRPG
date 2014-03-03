@@ -34,9 +34,12 @@ public class Commandspawnmob extends BaseCommand{
 			} else {
 				location = player.getLocation();
 			}
-			
+			try{
 				Bukkit.getWorld(player.getWorld().getName()).spawnEntity(location.add(0.0D, 1.0D, 0.0D), EntityType.valueOf(mob));
 				Utils.makeMessage(player, "Spawned a " + mob.toLowerCase() + ".");
+			}catch(IllegalArgumentException e){
+				Utils.makeMessage(player, "Invalid mob type.");
+			}
 		}
 		else if (args.length == 2){
 			String mob = args[0].toUpperCase();
@@ -58,10 +61,14 @@ public class Commandspawnmob extends BaseCommand{
 				Utils.makeMessage(player, "You cannot spawn more than " + plugin.maxSpawnmobLimit + " mobs.");
 				return;
 			}
-			for (int i=0;i<amount;i++){
-				Bukkit.getWorld(player.getWorld().getName()).spawnEntity(location.add(0.0D, 1.0D, 0.0D), EntityType.valueOf(mob));
+			try{
+				for (int i=0;i<amount;i++){
+					Bukkit.getWorld(player.getWorld().getName()).spawnEntity(location.add(0.0D, 1.0D, 0.0D), EntityType.valueOf(mob));
+				}
+				Utils.makeMessage(player, "Spawned " + amount + " " + mob.toLowerCase() + ".");
+			}catch(IllegalArgumentException e){
+				Utils.makeMessage(player, "Invalid mob type.");
 			}
-			Utils.makeMessage(player, "Spawned " + amount + " " + mob.toLowerCase() + ".");
 		}
 	}
 

@@ -23,8 +23,22 @@ public class Utils {
 		return false;
 	}
 	
-	public static void a(String s) {
-		Bukkit.broadcastMessage(s);
+	public static int parseInt(String str){
+		try{
+			return Integer.parseInt(str);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	public static float parseFloat(String str){
+		try{
+			return Float.parseFloat(str);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 	public static void loadFile(File file) {

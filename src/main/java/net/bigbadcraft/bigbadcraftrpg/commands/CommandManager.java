@@ -28,6 +28,12 @@ public class CommandManager implements CommandExecutor{
 				new Commandviewgold().execute(player, cmd, args);
 			}
 		}
+		else if (cmdName.equalsIgnoreCase("spawn")){
+			new Commandspawn(plugin).execute(player, cmd, args);
+		}
+		else if (cmdName.equalsIgnoreCase("clearinventory")){
+			new Commandclearinventory().execute(player, cmd, args);
+		}
 		else if (cmdName.equalsIgnoreCase("bounty")){
 			if (Utils.checkPermission(player, Permission.BOUNTY)){
 				new Commandbounty().execute(player, cmd, args);
@@ -36,6 +42,11 @@ public class CommandManager implements CommandExecutor{
 		else if (cmdName.equalsIgnoreCase("votetoken")){
 			if (Utils.checkPermission(player, Permission.VOTE_TOKEN)){
 				new Commandvotetoken(plugin).execute(player, cmd, args);
+			}
+		}
+		else if (cmdName.equalsIgnoreCase("paygold")){
+			if (Utils.checkPermission(player, Permission.PAY_GOLD)){
+				new Commandpaygold(plugin).execute(player, cmd, args);
 			}
 		}
 		else if (cmdName.equalsIgnoreCase("gamemode")){

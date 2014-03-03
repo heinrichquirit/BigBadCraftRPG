@@ -14,5 +14,10 @@ public class Permission {
 	public static final String BOUNTY = "bigbadcraftrpg.bounty";
 	public static final String VOTE_TOKEN = "bigbadcraftrpg.votetoken";
 	public static final String GAMEMODE = "bigbadcraftrpg.gamemode";
+	public static final String PAY_GOLD = "bigbadcraftrpg.paygold";
+	public static final String CLEAR_INVENTORY = "bigbadcraftrpg.clearinventory";
+	public static final String CLEAR_INVENTORY_OTHERS = "bigbadcraftrpg.clearinventory.others";
+	public static final String SPAWN = "bigbadcraftrpg.spawn";
+	public static final String SPAWN_SET = "bigbadcraftrpg.spawn.set";
 	
 }
