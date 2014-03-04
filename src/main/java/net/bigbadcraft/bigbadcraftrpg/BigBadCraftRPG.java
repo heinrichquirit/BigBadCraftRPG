@@ -7,6 +7,7 @@ import java.util.List;
 import main.java.net.bigbadcraft.bigbadcraftrpg.commands.CommandManager;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.EntityDropIngotListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.GodModeListener;
+import main.java.net.bigbadcraft.bigbadcraftrpg.managers.SpawnManager;
 import main.java.net.bigbadcraft.bigbadcraftrpg.managers.VoteTokenManager;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
@@ -31,7 +32,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public List<String> voteTokens;
 	
 	/* Spawn configuration settings */
-	public List<String> spawnPoints;
+	public List<String> spawns;
 	
 	public ConfigHandler confHandler;
 	
@@ -46,6 +47,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 	/* Managers */
 	private CommandManager commandManager;
 	public VoteTokenManager voteTokenManager;
+	public SpawnManager spawnManager;
 	
 	public void onEnable() {
 		
@@ -53,6 +55,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		
 		voteTokenManager = new VoteTokenManager(this);
 		commandManager = new CommandManager(this);
+		spawnManager = new SpawnManager(this);
 		
 		populateCommands();
 		saveDefaultConfig();
@@ -61,8 +64,6 @@ public class BigBadCraftRPG extends JavaPlugin {
 		ingotMaxLimit = getConfig().getInt(ConfigPath.INGOT_MAX);
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
-		
-		spawnPoints = getConfig().getStringList(ConfigPath.SPAWN);
 		
 		confHandler = new ConfigHandler(this);
 		
@@ -82,6 +83,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		spawnsConf = YamlConfiguration.loadConfiguration(spawnsFile);
 		confHandler.reloadSpawnsConf();
 		
+		spawns = spawnsConf.getStringList(ConfigPath.SPAWN);
 		
 		registerListener(new EntityDropIngotListener(this));
 		registerListener(new GodModeListener(this));

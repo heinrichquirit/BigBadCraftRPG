@@ -83,7 +83,7 @@ public class ConfigHandler {
 		try{
 			plugin.spawnsConf.save(plugin.spawnsFile);
 		}catch(IOException e){
-			Utils.log(Level.SEVERE, "Could not save vote tokens config to " + plugin.spawnsFile);
+			Utils.log(Level.SEVERE, "Could not save spawns config to " + plugin.spawnsFile);
 		}
 	}
 }
