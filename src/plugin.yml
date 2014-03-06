@@ -3,6 +3,8 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  spawn:
+    description: Teleport to spawn.
   paygold:
     description: Pay players using gold.
   gamemode:
@@ -12,8 +14,6 @@ commands:
     description: View your vote tokens and other information.
   bounty:
     description: Display information about bounty loots etc.
-  spawn:
-    description: Teleport to original default spawn point.
   clearinventory:
     description: Clear your inventory
     aliases: [ci]

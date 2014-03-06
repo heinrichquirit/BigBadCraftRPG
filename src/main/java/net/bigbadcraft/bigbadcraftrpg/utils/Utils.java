@@ -51,6 +51,18 @@ public class Utils {
 		}
 	}
 	
+	public static boolean isNull(Object obj){
+		if (obj == null){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static void a(String msg){
+		Bukkit.broadcastMessage(msg);
+	}
+	
 	public static void log(Level level, String message) {
 		Bukkit.getLogger().log(level, message);
 	}

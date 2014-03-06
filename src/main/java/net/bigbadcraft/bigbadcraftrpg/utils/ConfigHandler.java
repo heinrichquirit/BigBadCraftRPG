@@ -64,26 +64,27 @@ public class ConfigHandler {
 		}
 	}
 	
-	public void reloadSpawnsConf(){
-		if (plugin.spawnsFile == null){
-			plugin.spawnsFile = new File(plugin.getDataFolder(), "spawns.yml");
+	public void reloadSpawnConf(){
+		if (plugin.spawnFile == null){
+			plugin.spawnFile = new File(plugin.getDataFolder(), "spawn.yml");
 		}
-		plugin.spawnsConf = YamlConfiguration.loadConfiguration(plugin.spawnsFile);
-		InputStream stream = plugin.getResource("spawns.yml");
+		plugin.spawnConf = YamlConfiguration.loadConfiguration(plugin.spawnFile);
+		InputStream stream = plugin.getResource("spawn.yml");
 		if (stream != null){
 			YamlConfiguration streamConf = YamlConfiguration.loadConfiguration(stream);
-			plugin.spawnsConf.setDefaults(streamConf);
+			plugin.voteTokenConf.setDefaults(streamConf);
 		}
 	}
 	
-	public void saveSpawnsConf(){
-		if (plugin.spawnsConf == null || plugin.spawnsFile == null){
+	public void saveSpawnConf(){
+		if (plugin.spawnConf == null || plugin.spawnFile == null){
 			return;
 		}
 		try{
-			plugin.spawnsConf.save(plugin.spawnsFile);
+			plugin.spawnConf.save(plugin.spawnFile);
 		}catch(IOException e){
-			Utils.log(Level.SEVERE, "Could not save spawns config to " + plugin.spawnsFile);
+			Utils.log(Level.SEVERE, "Could not save vote tokens config to " + plugin.spawnFile);
 		}
 	}
+	
 }
