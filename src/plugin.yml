@@ -3,6 +3,8 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  rules:
+    description: View the rules.
   spawn:
     description: Teleport to spawn.
   paygold:

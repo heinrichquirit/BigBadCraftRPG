@@ -34,6 +34,11 @@ public class CommandManager implements CommandExecutor{
 		else if (cmdName.equalsIgnoreCase("clearinventory")){
 			new Commandclearinventory().execute(player, cmd, args);
 		}
+		else if (cmdName.equalsIgnoreCase("rules")){
+			if (Utils.checkPermission(player, Permission.RULES)){
+				new Commandrules(plugin).execute(player, cmd, args);
+			}
+		}
 		else if (cmdName.equalsIgnoreCase("bounty")){
 			if (Utils.checkPermission(player, Permission.BOUNTY)){
 				new Commandbounty().execute(player, cmd, args);

@@ -5,12 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 
 import main.java.net.bigbadcraft.bigbadcraftrpg.commands.CommandManager;
+import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.ColourizedSignListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.DeathSpawnListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.EntityDropIngotListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.GodModeListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.managers.VoteTokenManager;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
+import main.java.net.bigbadcraft.bigbadcraftrpg.utils.FileHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -41,6 +43,8 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public FileConfiguration voteTokenConf;
 	public File spawnFile;
 	public FileConfiguration spawnConf;
+	public File rulesFile;
+	public FileConfiguration rulesConf;
 	
 	/* Managers */
 	private CommandManager commandManager;
@@ -80,9 +84,15 @@ public class BigBadCraftRPG extends JavaPlugin {
 		spawnConf = YamlConfiguration.loadConfiguration(spawnFile);
 		confHandler.reloadSpawnConf();
 		
+		rulesFile = new File(getDataFolder(), "rules.yml");
+		Utils.loadFile(rulesFile);
+		rulesConf = YamlConfiguration.loadConfiguration(rulesFile);
+		new FileHandler(this, "rules.yml", rulesFile, rulesConf).reloadSettings();
+		
 		registerListener(new EntityDropIngotListener(this));
 		registerListener(new GodModeListener(this));
 		registerListener(new DeathSpawnListener(this));
+		registerListener(new ColourizedSignListener());
 		
 		for (String command:commands){
 			getCommand(command).setExecutor(commandManager);
@@ -105,6 +115,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		commands.add("paygold");
 		commands.add("clearinventory");
 		commands.add("spawn");
+		commands.add("rules");
 	}
 	
 	private void registerListener(Listener listener){

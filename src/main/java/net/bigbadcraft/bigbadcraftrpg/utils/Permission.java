@@ -19,5 +19,6 @@ public class Permission {
 	public static final String CLEAR_INVENTORY_OTHERS = "bigbadcraftrpg.clearinventory.others";
 	public static final String SPAWN = "bigbadcraftrpg.spawn";
 	public static final String SPAWN_SET = "bigbadcraftrpg.spawn.set";
+	public static final String RULES = "bigbadcraftrpg.rules";
 	
 }
