@@ -6,10 +6,10 @@ rules:
 - Do not &cspam &fchat
 - No &csexism &ftowards users
 - Do not &cadvertise &fother servers
-- &cRespect &fstaff members
+- Respect &cstaff &fmembers
 - No &cmob &ffarms
-- Use &ccommon &fsense
-- No &cx-ray &fhacks, clients or texture
+- Use &ccommon sense
+- No &cx-ray &fhacks, clients or textures
 # The max mob-spawn limit to spawn.
 max-spawn-mob-limit: 10
 # The max limit for the random number to be generated and the amount to drop on monster death

@@ -28,6 +28,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 	/* Configuration settings */
 	public int maxSpawnmobLimit;
 	public int ingotMaxLimit;
+	public List<String> rules;
 	public List<String> voteTokens;
 	
 	public ConfigHandler confHandler;
@@ -39,8 +40,6 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public FileConfiguration voteTokenConf;
 	public File spawnFile;
 	public FileConfiguration spawnConf;
-	public File rulesFile;
-	public FileConfiguration rulesConf;
 	
 	/* Managers */
 	private CommandManager commandManager;
@@ -56,6 +55,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		
 		ingotMaxLimit = getConfig().getInt(ConfigPath.INGOT_MAX);
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
+		rules = getConfig().getStringList(ConfigPath.RULES);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
 		
 		confHandler = new ConfigHandler(this);

@@ -1,7 +1,5 @@
 package main.java.net.bigbadcraft.bigbadcraftrpg.commands;
 
-import java.util.List;
-
 import main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
 
@@ -20,10 +18,9 @@ public class Commandrules extends BaseCommand{
 	public void execute(Player player, Command cmd, String[] args) {
 		// TODO Auto-generated method stub
 		if (args.length == 0){
-			List<String> rules = p.getConfig().getStringList("rules");
-			int count = 0;
+			int count = 1;
 			Utils.makeMessage(player, "Here are a list of rules.");
-			for (String rule:rules){
+			for (String rule:p.rules){
 				player.sendMessage((count++) + ". " + ChatColor.translateAlternateColorCodes('&', rule));
 			}
 		}

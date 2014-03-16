@@ -6,5 +6,6 @@ public class ConfigPath {
 	public static final String INGOT_MAX = "ingot-max-limit";
 	public static final String VOTE_TOKEN = "vote-token";
 	public static final String SPAWN_ON_DEATH = "spawn-on-death";
+	public static final String RULES = "rules";
 	
 }
