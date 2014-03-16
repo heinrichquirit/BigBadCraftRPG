@@ -39,6 +39,11 @@ public class CommandManager implements CommandExecutor{
 				new Commandrules(plugin).execute(player, cmd, args);
 			}
 		}
+		else if (cmdName.equalsIgnoreCase("teleport")){
+			if (Utils.checkPermission(player, Permission.TELEPORT)){
+				new Commandteleport().execute(player, cmd, args);
+			}
+		}
 		else if (cmdName.equalsIgnoreCase("bounty")){
 			if (Utils.checkPermission(player, Permission.BOUNTY)){
 				new Commandbounty().execute(player, cmd, args);

@@ -22,9 +22,7 @@ public class DeathSpawnListener implements Listener{
 	@EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
 	public void onDeath(PlayerDeathEvent event){
 		Player player = event.getEntity();
-		if (p.spawnOnDeath){
-			player.teleport(getLocation(p.spawnConf.getString("default-spawn")));
-		}
+		player.teleport(getLocation(p.spawnConf.getString("default-spawn")));
 	}
 	
 	private Location getLocation(String str){

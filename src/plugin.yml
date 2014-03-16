@@ -3,6 +3,9 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  teleport:
+    description: Manage all your teleportation needs.
+    aliases: [tpp]
   rules:
     description: View the rules.
   spawn:

@@ -1,7 +1,17 @@
+# Rules
+rules:
+- No &cexcessive &fswearing
+- No &cmods &for &chacks&f, optifine is &aacceptable
+- Do not ask for &crank &fpromotions
+- Do not &cspam &fchat
+- No &csexism &ftowards users
+- Do not &cadvertise &fother servers
+- &cRespect &fstaff members
+- No &cmob &ffarms
+- Use &ccommon &fsense
+- No &cx-ray &fhacks, clients or texture
 # The main colour scheme.
 colour-scheme: GOLD
-# True to teleport to spawn on death
-spawn-on-death: true
 # The max mob-spawn limit to spawn.
 max-spawn-mob-limit: 10
 # The max limit for the random number to be generated and the amount to drop on monster death

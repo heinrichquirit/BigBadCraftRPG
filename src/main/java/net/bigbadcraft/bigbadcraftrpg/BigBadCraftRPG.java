@@ -9,10 +9,10 @@ import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.ColourizedSignListener
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.DeathSpawnListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.EntityDropIngotListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.GodModeListener;
+import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.NoMobSpawnerListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.managers.VoteTokenManager;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
-import main.java.net.bigbadcraft.bigbadcraftrpg.utils.FileHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -32,7 +32,6 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public int maxSpawnmobLimit;
 	public int ingotMaxLimit;
 	public List<String> voteTokens;
-	public boolean spawnOnDeath;
 	
 	public ConfigHandler confHandler;
 	
@@ -64,7 +63,6 @@ public class BigBadCraftRPG extends JavaPlugin {
 		ingotMaxLimit = getConfig().getInt(ConfigPath.INGOT_MAX);
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
-		spawnOnDeath = getConfig().getBoolean(ConfigPath.SPAWN_ON_DEATH);
 		
 		confHandler = new ConfigHandler(this);
 		
@@ -84,15 +82,11 @@ public class BigBadCraftRPG extends JavaPlugin {
 		spawnConf = YamlConfiguration.loadConfiguration(spawnFile);
 		confHandler.reloadSpawnConf();
 		
-		rulesFile = new File(getDataFolder(), "rules.yml");
-		Utils.loadFile(rulesFile);
-		rulesConf = YamlConfiguration.loadConfiguration(rulesFile);
-		new FileHandler(this, "rules.yml", rulesFile, rulesConf).reloadSettings();
-		
 		registerListener(new EntityDropIngotListener(this));
 		registerListener(new GodModeListener(this));
 		registerListener(new DeathSpawnListener(this));
 		registerListener(new ColourizedSignListener());
+		registerListener(new NoMobSpawnerListener());
 		
 		for (String command:commands){
 			getCommand(command).setExecutor(commandManager);
@@ -116,6 +110,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		commands.add("clearinventory");
 		commands.add("spawn");
 		commands.add("rules");
+		commands.add("teleport");
 	}
 	
 	private void registerListener(Listener listener){
