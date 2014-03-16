@@ -3,8 +3,6 @@ package main.java.net.bigbadcraft.bigbadcraftrpg.utils;
 import java.io.File;
 import java.util.logging.Level;
 
-import main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,7 +10,7 @@ import org.bukkit.entity.Player;
 public class Utils {
 	
 	public static void makeMessage(Player player, String message){
-		player.sendMessage(ChatColor.valueOf(BigBadCraftRPG.getInstance().colourScheme.toUpperCase()) + message);
+		player.sendMessage(ChatColor.GOLD + message);
 	}
 	
 	public static boolean checkPermission(Player player, String permission){

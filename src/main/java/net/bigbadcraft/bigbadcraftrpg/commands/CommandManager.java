@@ -25,7 +25,7 @@ public class CommandManager implements CommandExecutor{
 		String cmdName = cmd.getName();
 		if (cmdName.equalsIgnoreCase("viewgold")){
 			if (Utils.checkPermission(player, Permission.VIEW_GOLD)){
-				new Commandviewgold().execute(player, cmd, args);
+				new Commandviewgold(plugin).execute(player, cmd, args);
 			}
 		}
 		else if (cmdName.equalsIgnoreCase("spawn")){

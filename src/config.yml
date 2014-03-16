@@ -10,8 +10,6 @@ rules:
 - No &cmob &ffarms
 - Use &ccommon &fsense
 - No &cx-ray &fhacks, clients or texture
-# The main colour scheme.
-colour-scheme: GOLD
 # The max mob-spawn limit to spawn.
 max-spawn-mob-limit: 10
 # The max limit for the random number to be generated and the amount to drop on monster death

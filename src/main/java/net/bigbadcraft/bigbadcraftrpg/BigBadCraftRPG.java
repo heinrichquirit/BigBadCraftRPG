@@ -22,13 +22,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BigBadCraftRPG extends JavaPlugin {
 	
-	private static BigBadCraftRPG instance;
-	
 	private final HashSet<String> commands = new HashSet<String>();
 	public final HashSet<String> godmode = new HashSet<String>();
 	
 	/* Configuration settings */
-	public String colourScheme;
 	public int maxSpawnmobLimit;
 	public int ingotMaxLimit;
 	public List<String> voteTokens;
@@ -51,15 +48,12 @@ public class BigBadCraftRPG extends JavaPlugin {
 	
 	public void onEnable() {
 		
-		instance = this;
-		
 		voteTokenManager = new VoteTokenManager(this);
 		commandManager = new CommandManager(this);
 		
 		populateCommands();
 		saveDefaultConfig();
 		
-		colourScheme = getConfig().getString(ConfigPath.COLOUR_SCHEME);
 		ingotMaxLimit = getConfig().getInt(ConfigPath.INGOT_MAX);
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
@@ -117,7 +111,4 @@ public class BigBadCraftRPG extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(listener, this);
 	}
 	
-	public static BigBadCraftRPG getInstance(){
-		return instance;
-	}
 }
