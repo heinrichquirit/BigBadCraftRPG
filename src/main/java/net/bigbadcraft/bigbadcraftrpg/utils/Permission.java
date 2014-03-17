@@ -21,5 +21,6 @@ public class Permission {
 	public static final String SPAWN_SET = "bigbadcraftrpg.spawn.set";
 	public static final String RULES = "bigbadcraftrpg.rules";
 	public static final String TELEPORT = "bigbadcraftrpg.teleport";
+	public static final String SHOP_CREATE = "bigbadcraftrpg.shop.create";
 	
 }

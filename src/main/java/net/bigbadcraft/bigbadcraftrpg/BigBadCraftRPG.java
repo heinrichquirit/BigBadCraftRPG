@@ -10,7 +10,10 @@ import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.DeathSpawnListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.EntityDropIngotListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.GodModeListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.NoMobSpawnerListener;
+import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.SilkTouchListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.managers.VoteTokenManager;
+import main.java.net.bigbadcraft.bigbadcraftrpg.shop.ShopBuyListener;
+import main.java.net.bigbadcraft.bigbadcraftrpg.shop.ShopCreateListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
@@ -81,6 +84,11 @@ public class BigBadCraftRPG extends JavaPlugin {
 		registerListener(new DeathSpawnListener(this));
 		registerListener(new ColourizedSignListener());
 		registerListener(new NoMobSpawnerListener());
+		registerListener(new SilkTouchListener());
+		
+		/* Shop Listener */
+		registerListener(new ShopCreateListener());
+		registerListener(new ShopBuyListener(this));
 		
 		for (String command:commands){
 			getCommand(command).setExecutor(commandManager);

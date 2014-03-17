@@ -18,7 +18,7 @@ public class Commandviewgold extends BaseCommand {
 	public void execute(Player player, Command cmd, String[] args) {
 		// TODO Auto-generated method stub
 		if (args.length == 0) {
-			Utils.makeMessage(player, "View other players gold balance: /viewgold <player>");
+			Utils.makeMessage(player, "View other player's gold balance: /viewgold <player>");
 			Utils.makeMessage(player, "Your gold balance is: " + p.goldConf.getInt(player.getName()));
 		}
 		else if (args.length == 1){
@@ -27,7 +27,7 @@ public class Commandviewgold extends BaseCommand {
 				Utils.makeMessage(player, args[0] + " is offline.");
 				return;
 			}
-			Utils.makeMessage(player, target.getName() + "is gold balance is: " + p.goldConf.getInt(target.getName()));
+			Utils.makeMessage(player, target.getName() + " is gold balance is: " + p.goldConf.getInt(target.getName()));
 		}
 	}
 	

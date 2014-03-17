@@ -22,11 +22,12 @@ public class Utils {
 	}
 	
 	public static int parseInt(String str){
+		int value = 0;
 		try{
-			return Integer.parseInt(str);
+			return value = Integer.parseInt(str);
 		}catch(NumberFormatException e){
 			e.printStackTrace();
-			return 0;
+			return value;
 		}
 	}
 	
@@ -55,6 +56,10 @@ public class Utils {
 		} else {
 			return false;
 		}
+	}
+	
+	public static boolean isNumeric(String str){
+	  return str.matches("-?\\d+(\\.\\d+)?"); 
 	}
 	
 	public static void a(String msg){
