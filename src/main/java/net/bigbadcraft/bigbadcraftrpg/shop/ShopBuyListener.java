@@ -51,6 +51,7 @@ public class ShopBuyListener implements Listener{
 					}
 					String itemName = Material.getMaterial(itemId).name().toLowerCase();
 					player.getInventory().addItem(new ItemStack(Material.getMaterial(itemId), itemQty));
+					player.updateInventory();
 					p.confHandler.reloadGoldConf();
 					p.goldConf.set(player.getName(), playerGold - itemPrice);
 					p.confHandler.saveGoldConf();

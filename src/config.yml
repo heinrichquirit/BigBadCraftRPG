@@ -1,5 +1,6 @@
 # Rules
 rules:
+- No &cgriefing &for it will result in a &cban
 - No &cexcessive &fswearing
 - No &cmods &for &chacks&f, optifine is &aacceptable
 - Do not ask for &crank &fpromotions
@@ -11,7 +12,7 @@ rules:
 - Use &ccommon sense
 - No &cx-ray &fhacks, clients or textures
 # The max mob-spawn limit to spawn.
-max-spawn-mob-limit: 10
+max-mob-spawn-limit: 10
 # The max limit for the random number to be generated and the amount to drop on monster death
 ingot-max-limit: 5
 # The information set-up for vote tokens.

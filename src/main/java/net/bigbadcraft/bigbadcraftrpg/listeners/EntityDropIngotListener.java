@@ -14,8 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -41,6 +39,7 @@ public class EntityDropIngotListener implements Listener {
 		}
 	}
 	
+	/*
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onItemRename(InventoryClickEvent event) {
 		if (event.getView().getType() == InventoryType.ANVIL) {
@@ -50,7 +49,13 @@ public class EntityDropIngotListener implements Listener {
 				}
 			}
 		}
+		else if (event.getView().getType() == InventoryType.WORKBENCH) {
+			if (event.getSlotType() == SlotType.CRAFTING) {
+				if (event.g)
+			}
+		}
 	}
+	*/
 	
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onJoin(PlayerJoinEvent event) {

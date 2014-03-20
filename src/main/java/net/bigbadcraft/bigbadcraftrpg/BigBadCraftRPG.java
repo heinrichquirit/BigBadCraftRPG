@@ -18,6 +18,7 @@ import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
@@ -90,9 +91,12 @@ public class BigBadCraftRPG extends JavaPlugin {
 		registerListener(new ShopCreateListener());
 		registerListener(new ShopBuyListener(this));
 		
+		if (Bukkit.getPluginManager().getPlugin("Zephyrus") == null) return;
+		
 		for (String command:commands){
 			getCommand(command).setExecutor(commandManager);
 		}
+		
 	}
 	
 	private void populateCommands(){
@@ -113,6 +117,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		commands.add("spawn");
 		commands.add("rules");
 		commands.add("teleport");
+		commands.add("displaymana");
 	}
 	
 	private void registerListener(Listener listener){

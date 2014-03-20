@@ -3,6 +3,9 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  displaymana:
+    description: Toggle boss bar mana display
+    aliases: [dm]
   teleport:
     description: Manage all your teleportation needs.
     aliases: [tpp]
