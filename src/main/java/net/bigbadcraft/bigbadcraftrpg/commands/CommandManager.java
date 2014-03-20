@@ -41,7 +41,7 @@ public class CommandManager implements CommandExecutor{
 		}
 		else if (cmdName.equalsIgnoreCase("displaymana")){
 			if (Utils.checkPermission(player, Permission.DISPLAY_MANA)){
-				new Commanddisplaymana(plugin).execute(player, cmd, args);
+				new Commanddisplaymana().execute(player, cmd, args);
 			}
 		}
 		else if (cmdName.equalsIgnoreCase("teleport")){

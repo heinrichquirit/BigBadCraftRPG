@@ -3,6 +3,9 @@ main: main.java.net.bigbadcraft.bigbadcraftrpg.BigBadCraftRPG
 version: 1.0.0
 author: [BigBadHenz]
 commands:
+  bancommand:
+    description: Ban certain command texts.
+    aliases: [bc]
   displaymana:
     description: Toggle boss bar mana display
     aliases: [dm]

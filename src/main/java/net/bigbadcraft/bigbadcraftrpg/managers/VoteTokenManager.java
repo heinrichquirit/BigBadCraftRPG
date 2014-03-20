@@ -13,7 +13,7 @@ public class VoteTokenManager {
 	}
 	
 	public int getVoteTokens(String name){
-		return plugin.voteTokenConf.getInt(name);
+		return plugin.voteHandler.getConfiguration().getInt(name);
 	}
 	
 	public void sendInformation(Player player){
@@ -32,12 +32,12 @@ public class VoteTokenManager {
 	}
 	
 	public void rewardPlayer(Player player, int voteTokens, int goldReward, int xpReward){
-		plugin.confHandler.reloadVoteTokenConf();
-		plugin.voteTokenConf.set(player.getName(), getVoteTokens(player.getName()) - voteTokens);
-		plugin.confHandler.saveVoteTokenConf();
-		plugin.confHandler.reloadGoldConf();
-		plugin.goldConf.set(player.getName(), plugin.goldConf.getInt(player.getName()) + goldReward);
-		plugin.confHandler.saveGoldConf();
+		plugin.voteHandler.reload();
+		plugin.voteHandler.getConfiguration().set(player.getName(), getVoteTokens(player.getName()) - voteTokens);
+		plugin.voteHandler.save();
+		plugin.goldHandler.reload();
+		plugin.goldHandler.getConfiguration().set(player.getName(), plugin.goldHandler.getConfiguration().getInt(player.getName()) + goldReward);
+		plugin.goldHandler.save();
 		player.setExp(player.getExp() + xpReward);
 	}
 	

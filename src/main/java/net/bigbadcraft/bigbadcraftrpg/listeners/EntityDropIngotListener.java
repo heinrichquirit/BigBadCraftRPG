@@ -60,10 +60,10 @@ public class EntityDropIngotListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onJoin(PlayerJoinEvent event) {
 		String name = event.getPlayer().getName();
-		if (!plugin.goldConf.contains(name)) {
-			plugin.confHandler.reloadGoldConf();
-			plugin.goldConf.set(name, 0);
-			plugin.confHandler.saveGoldConf();
+		if (!plugin.goldHandler.getConfiguration().contains(name)) {
+			plugin.goldHandler.reload();
+			plugin.goldHandler.getConfiguration().set(name, 0);
+			plugin.goldHandler.save();
 		}
 	}
 	
@@ -78,15 +78,15 @@ public class EntityDropIngotListener implements Listener {
 				if (itemHand.hasItemMeta() && isCurrencyIngot(itemHand)) {
 					if (itemHand.getAmount() != 1) {
 						player.getInventory().setItemInHand(ingot(itemHand.getAmount() - 1));
-						plugin.confHandler.reloadGoldConf();
-						plugin.goldConf.set(player.getName(), plugin.goldConf.getInt(player.getName()) + 1);
-						plugin.confHandler.saveGoldConf();
+						plugin.goldHandler.reload();
+						plugin.goldHandler.getConfiguration().set(player.getName(), plugin.goldHandler.getConfiguration().getInt(player.getName()) + 1);
+						plugin.goldHandler.save();
 						player.sendMessage(ChatColor.DARK_AQUA + "Successfully converted to spendable credit.");
 					} else {
 						player.getInventory().setItemInHand(null);
-						plugin.confHandler.reloadGoldConf();
-						plugin.goldConf.set(player.getName(), plugin.goldConf.getInt(player.getName()) + 1);
-						plugin.confHandler.saveGoldConf();
+						plugin.goldHandler.reload();
+						plugin.goldHandler.getConfiguration().set(player.getName(), plugin.goldHandler.getConfiguration().getInt(player.getName()) + 1);
+						plugin.goldHandler.save();
 						player.sendMessage(ChatColor.DARK_AQUA + "Successfully converted to spendable credit.");
 					}
 				}

@@ -28,15 +28,15 @@ public class Commandpaygold extends BaseCommand{
 					return;
 				}
 				int amount = Integer.parseInt(args[1]);
-				int balance = plugin.goldConf.getInt(player.getName());
+				int balance = plugin.goldHandler.getConfiguration().getInt(player.getName());
 				if (balance < amount){
 					Utils.makeMessage(player, "Cannot pay " + target.getName() + ", you need " + (amount-balance) + " gold.");
 					return;
 				}
-				plugin.confHandler.reloadGoldConf();
-				plugin.goldConf.set(player.getName(), balance - amount);
-				plugin.goldConf.set(target.getName(), plugin.goldConf.getInt(target.getName()) + amount);
-				plugin.confHandler.saveGoldConf();
+				plugin.goldHandler.reload();
+				plugin.goldHandler.getConfiguration().set(player.getName(), balance - amount);
+				plugin.goldHandler.getConfiguration().set(target.getName(), plugin.goldHandler.getConfiguration().getInt(target.getName()) + amount);
+				plugin.goldHandler.save();
 				Utils.makeMessage(player, "Successfully paid " + target.getName() + " " + amount + " gold.");
 				Utils.makeMessage(target, player.getName() + " has paid you " + amount + " gold.");
 			}catch(NumberFormatException e){

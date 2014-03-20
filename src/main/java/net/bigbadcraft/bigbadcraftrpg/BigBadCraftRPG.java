@@ -1,10 +1,10 @@
 package main.java.net.bigbadcraft.bigbadcraftrpg;
 
-import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 
 import main.java.net.bigbadcraft.bigbadcraftrpg.commands.CommandManager;
+import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.BanCommandListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.ColourizedSignListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.DeathSpawnListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.listeners.EntityDropIngotListener;
@@ -16,11 +16,8 @@ import main.java.net.bigbadcraft.bigbadcraftrpg.shop.ShopBuyListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.shop.ShopCreateListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
-import main.java.net.bigbadcraft.bigbadcraftrpg.utils.Utils;
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,16 +31,11 @@ public class BigBadCraftRPG extends JavaPlugin {
 	public int ingotMaxLimit;
 	public List<String> rules;
 	public List<String> voteTokens;
+	public List<String> bannedCommands;
 	
-	public ConfigHandler confHandler;
-	
-	/* Custom configuration files */
-	public File goldFile;
-	public FileConfiguration goldConf;
-	public File voteTokenFile;
-	public FileConfiguration voteTokenConf;
-	public File spawnFile;
-	public FileConfiguration spawnConf;
+	public ConfigHandler goldHandler;
+	public ConfigHandler voteHandler;
+	public ConfigHandler spawnHandler;
 	
 	/* Managers */
 	private CommandManager commandManager;
@@ -61,24 +53,15 @@ public class BigBadCraftRPG extends JavaPlugin {
 		maxSpawnmobLimit = getConfig().getInt(ConfigPath.MOB_SPAWN_LIMIT);
 		rules = getConfig().getStringList(ConfigPath.RULES);
 		voteTokens = getConfig().getStringList(ConfigPath.VOTE_TOKEN);
+		bannedCommands = getConfig().getStringList(ConfigPath.BAN_COMMANDS);
 		
-		confHandler = new ConfigHandler(this);
-		
-		/* Initialize and load the gold ingots balances file */
-		goldFile = new File(getDataFolder(), "goldingotbalances.yml");
-		Utils.loadFile(goldFile);
-		goldConf = YamlConfiguration.loadConfiguration(goldFile);
-		confHandler.reloadGoldConf();
-		
-		voteTokenFile = new File(getDataFolder(), "votetokens.yml");
-		Utils.loadFile(voteTokenFile);
-		voteTokenConf = YamlConfiguration.loadConfiguration(voteTokenFile);
-		confHandler.reloadVoteTokenConf();
-		
-		spawnFile = new File(getDataFolder(), "spawn.yml");
-		Utils.loadFile(spawnFile);
-		spawnConf = YamlConfiguration.loadConfiguration(spawnFile);
-		confHandler.reloadSpawnConf();
+		/* Neaten this up */
+		goldHandler = new ConfigHandler(this, "goldingotbalances.yml");
+		goldHandler.load();
+		voteHandler = new ConfigHandler(this, "votetokens.yml");
+		voteHandler.load();
+		spawnHandler = new ConfigHandler(this, "spawn.yml");
+		spawnHandler.load();
 		
 		registerListener(new EntityDropIngotListener(this));
 		registerListener(new GodModeListener(this));
@@ -86,6 +69,7 @@ public class BigBadCraftRPG extends JavaPlugin {
 		registerListener(new ColourizedSignListener());
 		registerListener(new NoMobSpawnerListener());
 		registerListener(new SilkTouchListener());
+		registerListener(new BanCommandListener(this));
 		
 		/* Shop Listener */
 		registerListener(new ShopCreateListener());

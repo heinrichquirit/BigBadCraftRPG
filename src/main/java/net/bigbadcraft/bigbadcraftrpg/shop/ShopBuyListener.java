@@ -44,7 +44,7 @@ public class ShopBuyListener implements Listener{
 						Utils.makeMessage(player, "Empty a spot in your inventory before purchasing.");
 						return;
 					}
-					int playerGold = p.goldConf.getInt(player.getName());
+					int playerGold = p.goldHandler.getConfiguration().getInt(player.getName());
 					if (itemPrice > playerGold){
 						Utils.makeMessage(player, "You need " + (itemPrice - playerGold) + " more gold to complete your purchase.");
 						return;
@@ -52,9 +52,9 @@ public class ShopBuyListener implements Listener{
 					String itemName = Material.getMaterial(itemId).name().toLowerCase();
 					player.getInventory().addItem(new ItemStack(Material.getMaterial(itemId), itemQty));
 					player.updateInventory();
-					p.confHandler.reloadGoldConf();
-					p.goldConf.set(player.getName(), playerGold - itemPrice);
-					p.confHandler.saveGoldConf();
+					p.goldHandler.reload();
+					p.goldHandler.getConfiguration().set(player.getName(), playerGold - itemPrice);
+					p.goldHandler.save();
 					Utils.makeMessage(player, "Successfully made a purchase of " + itemQty + " " + itemName + " for " + itemPrice + " gold.");
 				}
 			}

@@ -20,7 +20,7 @@ public class Commandspawn extends BaseCommand{
 	@Override
 	public void execute(Player player, Command cmd, String[] args) {
 		// TODO Auto-generated method stub
-		String path = p.spawnConf.getString("default-spawn");
+		String path = p.spawnHandler.getConfiguration().getString("default-spawn");
 		Location loc = player.getLocation();
 		if (args.length == 0){
 			if (Utils.checkPermission(player, Permission.SPAWN)){
@@ -35,10 +35,10 @@ public class Commandspawn extends BaseCommand{
 		else if (args.length == 1){
 			if (Utils.checkPermission(player, Permission.SPAWN_SET)){
 				if (args[0].equalsIgnoreCase("set")){
-					p.confHandler.reloadSpawnConf();
+					p.spawnHandler.reload();
 					Bukkit.getWorld(player.getWorld().getName()).setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-					p.spawnConf.set("default-spawn", formatLocation(loc));
-					p.confHandler.saveSpawnConf();
+					p.spawnHandler.getConfiguration().set("default-spawn", formatLocation(loc));
+					p.spawnHandler.save();
 					Utils.makeMessage(player, "Successfully set as default spawn.");
 				}
 			}

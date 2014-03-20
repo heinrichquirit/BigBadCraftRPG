@@ -19,25 +19,25 @@ public class VoteTokenListener implements Listener{
 	@EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
 	public void registerPlayer(PlayerJoinEvent event){
 		String name = event.getPlayer().getName();
-		if (!plugin.voteTokenConf.contains(name)){
-			plugin.confHandler.reloadVoteTokenConf();
-			plugin.voteTokenConf.set(name, 0);
-			plugin.confHandler.saveVoteTokenConf();
+		if (!plugin.voteHandler.getConfiguration().contains(name)){
+			plugin.voteHandler.reload();
+			plugin.voteHandler.getConfiguration().set(name, 0);
+			plugin.voteHandler.save();
 		}
 	}
 	
 	@EventHandler(priority=EventPriority.NORMAL,ignoreCancelled=true)
 	public void onVote(VotifierEvent event){
 		String voterName = event.getVote().getUsername();
-		if (!plugin.voteTokenConf.contains(voterName)){
-			plugin.confHandler.reloadVoteTokenConf();
-			plugin.voteTokenConf.set(voterName, 0);
-			plugin.confHandler.saveVoteTokenConf();
+		if (!plugin.voteHandler.getConfiguration().contains(voterName)){
+			plugin.voteHandler.reload();
+			plugin.voteHandler.getConfiguration().set(voterName, 0);
+			plugin.voteHandler.save();
 		}
-		if (plugin.voteTokenConf.contains(voterName)){
-			plugin.confHandler.reloadVoteTokenConf();
-			plugin.voteTokenConf.set(voterName, plugin.voteTokenManager.getVoteTokens(voterName) + 1);
-			plugin.confHandler.saveVoteTokenConf();
+		if (plugin.voteHandler.getConfiguration().contains(voterName)){
+			plugin.voteHandler.reload();
+			plugin.voteHandler.getConfiguration().set(voterName, plugin.voteTokenManager.getVoteTokens(voterName) + 1);
+			plugin.voteHandler.save();
 		}
 	}
 }

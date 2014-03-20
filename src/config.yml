@@ -1,4 +1,8 @@
 # Rules
+banned-command-texts:
+- /cast conjure
+- /cast dim
+- /cast shine
 rules:
 - No &cgriefing &for it will result in a &cban
 - No &cexcessive &fswearing
