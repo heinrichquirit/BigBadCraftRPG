@@ -17,7 +17,6 @@ import main.java.net.bigbadcraft.bigbadcraftrpg.shop.ShopCreateListener;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigHandler;
 import main.java.net.bigbadcraft.bigbadcraftrpg.utils.ConfigPath;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -74,8 +73,6 @@ public class BigBadCraftRPG extends JavaPlugin {
 		/* Shop Listener */
 		registerListener(new ShopCreateListener());
 		registerListener(new ShopBuyListener(this));
-		
-		if (Bukkit.getPluginManager().getPlugin("Zephyrus") == null) return;
 		
 		for (String command:commands){
 			getCommand(command).setExecutor(commandManager);
