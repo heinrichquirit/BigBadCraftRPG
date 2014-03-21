@@ -25,7 +25,7 @@ public class BanCommandListener implements Listener{
 			Utils.makeMessage(player, "You're not allowed to use the following command syntaxes:");
 			int count = 1;
 			for (String cmdSyntax:p.bannedCommands){
-				Utils.makeMessage(player, (count++) + cmdSyntax);
+				Utils.makeMessage(player, (count++) + ". " + cmdSyntax);
 			}
 		}
 	}
